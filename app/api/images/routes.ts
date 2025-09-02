@@ -5,7 +5,7 @@ import path from "path";
 import { ALLOWED_TYPES } from '../../types';
 
 // Define allowed image types
-const UPLOAD_DIR = path.join(process.cwd(), "app/temp-images");
+const UPLOAD_DIR = path.join(process.cwd(), "public/temp-images");
 
 // GET: List all images
 export async function GET() {

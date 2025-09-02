@@ -48,7 +48,10 @@ export default function UploadButton({ onUpload }: UploadButtonProps) {
     return (
         <div className="relative">
             <button
-                className="uploadButton"
+                className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-black font-medium 
+                         rounded-md transition-colors duration-200 uppercase text-sm
+                         disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer
+                         border border-gray-300"
                 onClick={handleClick}
                 disabled={isUploading}
             >
