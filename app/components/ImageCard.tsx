@@ -61,7 +61,7 @@ export default function ImageCard({ image, onDelete }: ImageCardProps) {
                 )}
             </div>
 
-            <div className="p-2 text-sm text-center truncate">
+            <div className="p-2 text-sm text-center truncate text-black">
                 {image.filename}
             </div>
 

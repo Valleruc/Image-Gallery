@@ -24,14 +24,14 @@ export default function Home() {
       try {
         const response = await fetch('/api/images');
         const data = await response.json();
-        setImages(data.images); // Updates context state
+        setImages(data.images);
       } catch (error) {
         console.error('Failed to fetch images:', error);
       }
     };
 
     fetchImages();
-  }, [setImages]); // Empty array = only runs on mount
+  }, [setImages]);
 
   // Handle image deletion
   const handleDeleteImage = (image: Image): boolean => {
@@ -53,7 +53,7 @@ export default function Home() {
             </div>
             <UploadButton onUpload={uploadImage} />
           </div>
-          <div className="text-gray-600 mb-4">
+          <div className="text-black mb-4">
             {filteredImages.length} images
           </div>
           <ImageGallery
