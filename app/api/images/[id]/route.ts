@@ -9,10 +9,10 @@ const UPLOAD_DIR = path.join(process.cwd(), "public/temp-images");
 // DELETE: Remove image
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     // Find file with this ID
     const files = await readdir(UPLOAD_DIR, { withFileTypes: true });
@@ -20,11 +20,6 @@ export async function DELETE(
 
     if (!fileToDelete) {
       return NextResponse.json({ error: "Image not found" }, { status: 404 });
-    }
-
-    // Validate file type
-    if (!ALLOWED_TYPES.includes(fileToDelete.name.split(".")[1])) {
-      return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
     }
 
     // Delete the file
