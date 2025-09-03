@@ -8,10 +8,12 @@ import { useImageUpload } from './hooks/useImageUpload';
 import ImageGallery from './components/ImageGallery';
 import { useImageGallery } from './contexts/ImageGalleryContext';
 import { Image } from './types';
+import ImagePreview from './components/ImagePreview';
 
 export default function Home() {
   // User Search Input State
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
 
   // Get filtered images
   const { filteredImages, isSearching } = useImageSearch(searchQuery);
@@ -59,10 +61,27 @@ export default function Home() {
           <ImageGallery
             images={filteredImages}
             onDeleteImage={handleDeleteImage}
+            onImageClick={setSelectedImage}
             isLoading={isSearching}
           />
         </div>
       </div>
+      
+      {/* Image Preview Modal */}
+      {selectedImage && (
+        <ImagePreview
+          image={selectedImage}
+          isOpen={!!selectedImage}
+          onClose={() => setSelectedImage(null)}
+          onDelete={async (image) => {
+            const success = handleDeleteImage(image);
+            if (success) {
+              setSelectedImage(null);
+            }
+            return success;
+          }}
+        />
+      )}
     </div>
   );
 }

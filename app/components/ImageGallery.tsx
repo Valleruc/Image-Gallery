@@ -7,10 +7,11 @@ import ImageCard from "./ImageCard";
 interface ImageGalleryProps {
     images: Image[];
     onDeleteImage: (image: Image) => boolean;
+    onImageClick: (image: Image) => void;
     isLoading?: boolean;
 }
 
-export default function ImageGallery({ images, onDeleteImage, isLoading }: ImageGalleryProps) {
+export default function ImageGallery({ images, onDeleteImage, onImageClick, isLoading }: ImageGalleryProps) {
     // Simple passthrough - no local state or context usage
 
     if (isLoading) {
@@ -39,6 +40,7 @@ export default function ImageGallery({ images, onDeleteImage, isLoading }: Image
                     key={image.id}
                     image={image}
                     onDelete={onDeleteImage}
+                    onImageClick={onImageClick}
                 />
             ))}
         </div>

@@ -7,9 +7,10 @@ import Image from "next/image";
 interface ImageCardProps {
     image: ImageType,
     onDelete: (image: ImageType) => boolean;
+    onImageClick: (image: ImageType) => void;
 }
 
-export default function ImageCard({ image, onDelete }: ImageCardProps) {
+export default function ImageCard({ image, onDelete, onImageClick }: ImageCardProps) {
     const [isHover, setIsHover] = useState(false);
     const [isDelete, setDelete] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -45,7 +46,10 @@ export default function ImageCard({ image, onDelete }: ImageCardProps) {
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
         >
-            <div className="relative aspect-square">
+            <div 
+                className="relative aspect-square cursor-pointer"
+                onClick={() => onImageClick(image)}
+            >
                 {imageError ? (
                     <div className="flex items-center justify-center h-full text-gray-400">
                         <span>Failed to load image</span>
