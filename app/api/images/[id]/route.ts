@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { unlink, readdir } from "fs/promises";
 import path from "path";
 
-import { ALLOWED_TYPES } from '../../../types';
-
 const UPLOAD_DIR = path.join(process.cwd(), "public/temp-images");
 
 // DELETE: Remove image
