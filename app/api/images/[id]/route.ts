@@ -10,12 +10,14 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Get ID From Params
     const { id } = await params;
 
     // Find file with this ID
     const files = await readdir(UPLOAD_DIR, { withFileTypes: true });
     const fileToDelete = files.find((file) => file.name.split(".")[0] === id);
 
+    //If File Not Found
     if (!fileToDelete) {
       return NextResponse.json({ error: "Image not found" }, { status: 404 });
     }

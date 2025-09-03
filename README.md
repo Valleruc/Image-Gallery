@@ -37,4 +37,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 ## Time to Complete
-Approx: 6 Hrs.
+Basic App: Approx: 6 Hrs.
+Enhancements: 1 Hr.

@@ -16,4 +16,5 @@ export interface ImageGalleryContextType {
   searchImages: (name: string) => Image[];
 }
 
+//TODO: make this be more dynamic via API
 export const ALLOWED_TYPES = ["image/jpeg", "image/jpg", "image/png"];

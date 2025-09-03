@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useImageGallery } from "../contexts/ImageGalleryContext";
 import { useDebounce } from "./useDebounce";
 
+// Allow for multiple ways of search
 export function useImageSearch(
   searchQuery: string,
   debounceDelay: number = 300
@@ -11,7 +12,7 @@ export function useImageSearch(
   // Debounce the search query
   const debouncedSearchQuery = useDebounce(searchQuery, debounceDelay);
 
-  // Memoize the filtered results
+  // Memoize the filtered results to prevent re-renders
   const filteredImages = useMemo(() => {
     if (!debouncedSearchQuery.trim()) {
       return imageGallery;

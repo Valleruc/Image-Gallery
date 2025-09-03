@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useImageGallery } from "../contexts/ImageGalleryContext";
 
+// Allow for multiple ways of upload
 export function useImageUpload() {
   const { addImage } = useImageGallery();
 
